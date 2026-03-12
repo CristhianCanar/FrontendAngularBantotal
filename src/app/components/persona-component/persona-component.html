@@ -1,0 +1,93 @@
+<div class="container justify-content-center align-items-center mt-5">
+  <div class="row justify-content-center align-items-center">
+    <div class="card col-8 shadow-sm p-4">
+      <h5 class="mb-3">Buscar Cliente</h5>
+
+      <form (ngSubmit)="buscarCliente()" #form="ngForm">
+        <div class="input-group">
+          <input type="number" class="form-control" placeholder="Ingrese ID del cliente" name="idCliente"
+            [(ngModel)]="idCliente" required />
+          <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+            <i class="bi bi-search"></i> Enviar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row justify-content-center align-items-center mt-4">
+    @if (cargando()) {
+    <div class="d-flex justify-content-center my-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+    </div>
+    }
+
+    @if (error()) {
+    <div class="alert alert-danger" role="alert">
+      Ocurrió un error al cargar la persona. Por favor, inténtalo de nuevo más tarde.
+      {{ error() }}
+    </div>
+    }
+    @if (persona() && persona()?.documento != '') {
+    <div class="card p-0 profile-card shadow-lg col-md-6 col-lg-5">
+
+      <!-- Header -->
+      <div class="profile-header">
+        <div class="avatar">{{ persona()?.nombreCompleto?.trim()?.charAt(0)?.toUpperCase() }}</div>
+        <h4 class="mb-0">{{ persona()?.nombreCompleto }}</h4>
+        <span class="badge bg-light text-dark mt-2">{{ persona()?.nacionalidad }}</span>
+      </div>
+
+      <!-- Body -->
+      <div class="card-body p-4">
+
+        <div class="row mb-3">
+          <div class="col-6">
+            <div class="info-label"><i class="bi bi-hash"></i> ID Cliente</div>
+            <div>{{ persona()?.idCliente }}</div>
+          </div>
+          <div class="col-6">
+            <div class="info-label"><i class="bi bi-credit-card"></i> Documento</div>
+            <div>{{ persona()?.documento }}</div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-6">
+            <div class="info-label"><i class="bi bi-envelope"></i> Correo</div>
+            <div>{{ persona()?.correo }}</div>
+          </div>
+          <div class="col-6">
+            <div class="info-label"><i class="bi bi-telephone"></i> Teléfono</div>
+            <div>{{ persona()?.telefono }}</div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-6">
+            <div class="info-label"><i class="bi bi-cash-coin"></i> Ingresos</div>
+            <div>$ {{ persona()?.ingresos }}</div>
+          </div>
+          <div class="col-6">
+            <div class="info-label"><i class="bi bi-calendar-event"></i> Fecha Nacimiento</div>
+            <div>{{ persona()?.fechaNacimiento }}</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="info-label"><i class="bi bi-geo-alt"></i> Dirección</div>
+          <div>{{ persona()?.direccion }}</div>
+        </div>
+
+      </div>
+
+    </div>
+    } @else {
+    <div class="alert alert-danger" role="alert">
+      Persona no encontrada. Por favor, verifica el ID ingresado e inténtalo de nuevo.
+      {{ error() }}
+    </div>
+    }
+  </div>
+</div>

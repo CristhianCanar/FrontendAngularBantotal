@@ -1,0 +1,8 @@
+{
+  "/btdeveloper": {
+    "target": "http://btd-bantotal.eastus2.cloudapp.azure.com:4462",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
