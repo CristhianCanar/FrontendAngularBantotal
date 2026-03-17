@@ -15,7 +15,7 @@ export class ObtenerPersonaService {
 
   obtenerPersona(request: ObtenerPersonaRequest): Observable<Persona> {
 
-    const url = `${this.baseUrl}/personas/${request.clienteUId}`;
+    const url = `${this.baseUrl}/clientes/${request.clienteUId}`;
 
     console.log('Obteniendo persona con clienteUId:', url);
 

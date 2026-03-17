@@ -4,8 +4,6 @@
 }
 
 .profile-header {
-  background: linear-gradient(90deg, var(--bt-primary), var(--bt-secondary));
-  color: white;
   padding: 2rem 1rem;
   text-align: center;
 }

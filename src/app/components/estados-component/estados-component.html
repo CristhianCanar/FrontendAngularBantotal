@@ -1,0 +1,64 @@
+<div class="container justify-content-center align-items-center mt-5">
+  <div class="row justify-content-center align-items-center">
+    <div class="card col-8 shadow-sm p-4">
+      <h5 class="mb-3">Buscar Estado/Provincia por ID de Pais</h5>
+
+      <form (ngSubmit)="buscarEstado()" #form="ngForm">
+        <div class="input-group">
+          <input type="number" class="form-control" placeholder="Ingrese ID del Estado/Provincia" name="idEstado/Provincia"
+            [(ngModel)]="paisId" required />
+          <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+            <i class="bi bi-search"></i> Enviar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row justify-content-center align-items-center mt-4">
+    @if (cargando()) {
+    <div class="d-flex justify-content-center my-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+    </div>
+    }
+
+    @if (error()) {
+    <div class="alert alert-danger" role="alert">
+      Ocurrió un error al cargar la estado. Por favor, inténtalo de nuevo más tarde.
+      {{ error() }}
+    </div>
+    }
+    @if (estado() && estado()?.identificador) {
+    <div class="card p-4 profile-card shadow-lg col-md-6 col-lg-5">
+
+      <!-- Header -->
+      <div class="profile-header">
+        <h4 class="mb-0">Estado/Provincia</h4>
+      </div>
+
+      <!-- Body -->
+      <div class="card-body p-4">
+
+        <div class="row mb-3">
+          <div class="col-6">
+            <div class="info-label"><i class="bi bi-hash"></i> ID Estado</div>
+            <div><span class="badge bg-light text-dark mt-2">{{ estado()?.identificador }}</span></div>
+          </div>
+          <div class="col-6">
+            <div class="info-label"><i class="bi bi-hash"></i> Descripción</div>
+            <div><span class="badge bg-light text-dark mt-2">{{ estado()?.descripcion }}</span></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    } @else {
+    <div class="alert alert-danger" role="alert">
+      estado no encontrada. Por favor, verifica el ID ingresado e inténtalo de nuevo.
+      {{ error() }}
+    </div>
+    }
+  </div>
+</div>
