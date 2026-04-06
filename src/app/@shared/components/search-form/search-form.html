@@ -1,0 +1,23 @@
+<div class="row justify-content-center">
+  <div class="card col-8 shadow-sm p-4">
+
+    <h5 class="mb-3">Buscar Cliente</h5>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <div class="input-group">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Ingrese ID del cliente"
+          name="idCliente"
+          [(ngModel)]="idCliente"
+          required />
+
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+          <i class="bi bi-search"></i> Enviar
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

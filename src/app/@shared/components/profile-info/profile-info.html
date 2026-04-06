@@ -1,0 +1,37 @@
+<div class="row mb-3">
+  <div class="col-6">
+    <div class="info-label"><i class="bi bi-hash"></i> ID Cliente</div>
+    <div>{{ persona?.idCliente }}</div>
+  </div>
+  <div class="col-6">
+    <div class="info-label"><i class="bi bi-credit-card"></i> Documento</div>
+    <div>{{ persona?.documento }}</div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-6">
+    <div class="info-label"><i class="bi bi-envelope"></i> Correo</div>
+    <div>{{ persona?.correo }}</div>
+  </div>
+  <div class="col-6">
+    <div class="info-label"><i class="bi bi-telephone"></i> Teléfono</div>
+    <div>{{ persona?.telefono }}</div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-6">
+    <div class="info-label"><i class="bi bi-cash-coin"></i> Ingresos</div>
+    <div>$ {{ persona?.ingresos }}</div>
+  </div>
+  <div class="col-6">
+    <div class="info-label"><i class="bi bi-calendar-event"></i> Fecha Nacimiento</div>
+    <div>{{ persona?.fechaNacimiento }}</div>
+  </div>
+</div>
+
+<div class="mb-3">
+  <div class="info-label"><i class="bi bi-geo-alt"></i> Dirección</div>
+  <div>{{ persona?.direccion }}</div>
+</div>

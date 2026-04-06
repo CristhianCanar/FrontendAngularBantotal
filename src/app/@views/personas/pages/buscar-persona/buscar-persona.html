@@ -1,0 +1,27 @@
+<div class="container mt-5">
+
+  <app-search-form
+    (search)="buscarCliente()">
+  </app-search-form>
+
+  <div class="row justify-content-center mt-4">
+    @if (cargando()) {
+      <app-loading-spinner></app-loading-spinner>
+    }
+    @if (error()) {
+      <app-error-alert
+        [message]="error()">
+      </app-error-alert>
+    }
+    @if (persona() && persona()?.documento !== '') {
+      <app-profile-card
+        [persona]="persona()">
+      </app-profile-card>
+    }
+    @if (!cargando() && persona()?.documento === '') {
+      <app-empty-state
+        message="Persona no encontrada">
+      </app-empty-state>
+    }
+  </div>
+</div>
