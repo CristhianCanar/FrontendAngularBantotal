@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PersonaComponent } from './persona-component';
+import { DetailCard } from './detail-card';
 
-describe('PersonaComponent', () => {
-  let component: PersonaComponent;
-  let fixture: ComponentFixture<PersonaComponent>;
+describe('DetailCard', () => {
+  let component: DetailCard;
+  let fixture: ComponentFixture<DetailCard>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PersonaComponent]
+      imports: [DetailCard]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PersonaComponent);
+    fixture = TestBed.createComponent(DetailCard);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

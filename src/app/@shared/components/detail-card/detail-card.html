@@ -1,0 +1,28 @@
+<div class="card p-4 profile-card shadow-lg col-md-6 col-lg-5">
+  <!-- Header -->
+  <div class="profile-header">
+    <h4 class="mb-0">{{ title }}</h4>
+  </div>
+
+  <!-- Body -->
+  <div class="card-body p-4">
+    <div class="row mb-3">
+      @for (field of fields; track field.key) {
+        <div class="col-6">
+          <div class="info-label">
+            @if (field.icon) {
+              <i class="{{ field.icon }}"></i>
+            }
+            {{ field.label }}
+          </div>
+
+          <div>
+            <span class="badge bg-light text-dark mt-2">
+              {{ data?.[field.key] }}
+            </span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

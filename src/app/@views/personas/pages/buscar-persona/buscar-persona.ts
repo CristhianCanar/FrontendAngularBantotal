@@ -18,14 +18,20 @@ export class BuscarPersona {
   persona = signal<Persona | null>(null);
   cargando = signal<boolean>(false);
   error = signal<string | null>(null);
-  idCliente = signal<number>(0);
+  idBusqueda = signal<number>(0);
 
   constructor(private obtenerPersonaService: ObtenerPersonaService) { }
 
+  onSearch(idCliente: number) {
+    this.idBusqueda.set(idCliente);
+    this.buscarCliente();
+  }
+
   buscarCliente(): void {
     this.cargando.set(true);
+
     const request: ObtenerPersonaRequest = {
-      clienteUId: this.idCliente() // Convertir a número
+      clienteUId: this.idBusqueda()
     };
 
     this.obtenerPersonaService.obtenerPersona(request)
@@ -52,4 +58,6 @@ export class BuscarPersona {
   clean(value: string | undefined): string {
     return value ? value.trim() : '-';
   }
+
+
 }

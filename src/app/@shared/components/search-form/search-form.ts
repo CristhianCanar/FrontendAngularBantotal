@@ -10,13 +10,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './search-form.css',
 })
 export class SearchForm {
-  idCliente!: number;
+  idBusqueda!: number;
+  title: string = "Buscar";
 
   @Output() search = new EventEmitter<number>();
 
   onSubmit(form: any) {
     if (form.valid) {
-      this.search.emit(this.idCliente);
+      this.search.emit(this.idBusqueda);
     }
   }
 }

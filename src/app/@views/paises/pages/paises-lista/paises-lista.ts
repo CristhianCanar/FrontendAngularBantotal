@@ -1,23 +1,33 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { PaisLocal } from '../../../../@shared/models/paises-local/pais-local.model';
-import { PaisesLocalService } from '../../../../@shared/services/paises-local/paises-local-service';
+import { Pais } from '../../../../@shared/models/paises/pais.model';
+import { PaisesService } from '../../../../@shared/services/paises/paises-service';
+import { LoadingSpinner } from "../../../../@shared/components/loading-spinner/loading-spinner";
+import { ErrorAlert } from "../../../../@shared/components/error-alert/error-alert";
+import { Table } from "../../../../@shared/components/table/table";
 
 @Component({
   selector: 'app-paises-lista',
   standalone: true,
-  imports: [],
+  imports: [LoadingSpinner, ErrorAlert, Table],
   templateUrl: './paises-lista.html',
   styleUrl: './paises-lista.css',
 })
-export class PaisesLista implements OnInit{
-  paises: PaisLocal[] = [];
+export class PaisesLista implements OnInit {
+  paises: Pais[] = [];
   cargando = signal<boolean>(true);
   error = signal<string | null>(null);
 
-  constructor(private paisesLocalService: PaisesLocalService) { }
+  columnas = [
+    { key: 'identificador', label: 'ID' },
+    { key: 'descripcion', label: 'Descripción' },
+    { key: 'paisISO', label: 'ISO' },
+    { key: 'paisUnicode', label: 'Unicode' }
+  ];
+
+  constructor(private paisesService: PaisesService) { }
 
   ngOnInit(): void {
-    this.paisesLocalService.obtenerPaisesLocal()
+    this.paisesService.obtenerPaises()
       .subscribe({
         next: (response) => {
           this.paises = response;

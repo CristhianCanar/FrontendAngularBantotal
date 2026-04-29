@@ -1,4 +1,4 @@
-export interface PaisLocal {
+export interface Pais {
   identificador: number;
   descripcion: string;
   paisUnicode: string;

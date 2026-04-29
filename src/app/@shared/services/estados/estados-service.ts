@@ -7,7 +7,7 @@ import { Estado } from '../../models/estados/estado.model';
 @Injectable({
   providedIn: 'root',
 })
-export class EstadoByPaisService {
+export class EstadosService {
   private baseUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {}

@@ -1,10 +1,11 @@
 export const API_ENDPOINTS = {
   PAISES: {
-    GET_ALL: '/paises',
-    GET_BY_ID: (id: number) => `/paises/estados/${id}`,
+    GET_ALL: 'paises',
+  },
+  ESTADOS: {
+    GET_BY_ID: (paisId: number) => `paises/estados/${paisId}`,
   },
   PERSONAS: {
-    GET_ALL: '/personas',
-    GET_BY_ID: (id: number) => `/personas/${id}`,
+    GET_BY_ID: (idCliente: number) => `personas/${idCliente}`,
   },
 };

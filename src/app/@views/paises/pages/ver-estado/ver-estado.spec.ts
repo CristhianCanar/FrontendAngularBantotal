@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PaisesLocalComponent } from './paises-local-component';
+import { VerEstado } from './ver-estado';
 
-describe('PaisesLocalComponent', () => {
-  let component: PaisesLocalComponent;
-  let fixture: ComponentFixture<PaisesLocalComponent>;
+describe('VerEstado', () => {
+  let component: VerEstado;
+  let fixture: ComponentFixture<VerEstado>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PaisesLocalComponent]
+      imports: [VerEstado]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PaisesLocalComponent);
+    fixture = TestBed.createComponent(VerEstado);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

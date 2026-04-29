@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { Estado } from '../../models/estados/estado.model';
-import { EstadoByPaisService } from '../../services/estados/estado-by-pais-service';
+import { EstadosService } from '../../services/estados/estados-service';
 import { ObtenerEstadosByPaisRequest } from '../../models/estados/obtener-estados-by-pais-request.model';
 import { FormsModule } from '@angular/forms';
 
@@ -16,7 +16,7 @@ export class EstadosComponent {
   error = signal<string | null>(null);
   paisId = signal<number>(0);
 
-  constructor(private estadoByPaisService: EstadoByPaisService) { }
+  constructor(private estadosService: EstadosService) { }
 
   buscarEstado(): void {
     this.cargando.set(true);
@@ -24,7 +24,7 @@ export class EstadosComponent {
       pais: this.paisId()
     };
 
-    this.estadoByPaisService.obtenerEstadosByPais(request)
+    this.estadosService.obtenerEstadosByPais(request)
       .subscribe({
         next: (response) => {
 

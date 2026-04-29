@@ -1,5 +1,5 @@
 export interface Persona {
-    idCliente: number;
+    idPersona: number;
     nombreCompleto: string;
     documento: string;
     correo: string;
