@@ -1,14 +1,26 @@
 <div class="container mt-5">
-  <h3 class="mb-4">Listado de Países</h3>
+  <h3 class="mb-4">Buscar Estado por ID País</h3>
 
-  @if (cargando()) {
-    <app-loading-spinner></app-loading-spinner>
-  }
+  <app-search-form
+    [title]="'Buscar Estado por ID País'"
+    (search)="onSearch($event)"
+  ></app-search-form>
 
-  @if (error()) {
-    <app-error-alert [message]="error()"> </app-error-alert>
-  }
-<!--   @if (!cargando() && !error()) {
-    <app-table [columns]="columnas" [data]="paises"></app-table>
-  } -->
+  <div class="row justify-content-center mt-4">
+    @if (cargando()) {
+      <app-loading-spinner></app-loading-spinner>
+    }
+
+    @if (error()) {
+      <app-error-alert [message]="error()"> </app-error-alert>
+    }
+
+    @if (estado() && estado()?.identificador) {
+      <app-detail-card [title]="'Estado/Provincia Detalles'" [data]="estado()" [fields]="columnas">
+      </app-detail-card>
+    }
+    @if (!cargando() && estado()?.identificador === '') {
+      <app-empty-state message="Estado no encontrado"> </app-empty-state>
+    }
+  </div>
 </div>

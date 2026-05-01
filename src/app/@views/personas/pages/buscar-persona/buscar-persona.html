@@ -1,6 +1,7 @@
 <div class="container mt-5">
-  <!-- <app-search-form (search)="buscarCliente()"> </app-search-form> -->
-  <app-search-form [title]="'Buscar Persona'" (search)="onSearch($event)"></app-search-form>
+  <h3 class="mb-4">Buscar Persona por ID</h3>
+
+  <app-search-form [title]="'Buscar por ID Persona'" (search)="onSearch($event)"></app-search-form>
 
   <div class="row justify-content-center mt-4">
     @if (cargando()) {

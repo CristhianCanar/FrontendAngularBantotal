@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 
@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class SearchForm {
   idBusqueda!: number;
-  title: string = "Buscar";
+  @Input() title: string = "Buscar";
 
   @Output() search = new EventEmitter<number>();
 
