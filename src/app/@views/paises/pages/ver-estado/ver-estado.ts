@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { LoadingSpinner } from "../../../../@shared/components/loading-spinner/loading-spinner";
 import { ErrorAlert } from "../../../../@shared/components/error-alert/error-alert";
 import { FormsModule } from '@angular/forms';
@@ -44,15 +44,18 @@ export class VerEstado {
     this.estadosService.obtenerEstadosByPais(request)
       .subscribe({
         next: (response) => {
-
-          this.estado.set(response[0]);
-
+          if (response.length === 0) {
+            this.estado.set(null); // null si no hay resultado
+          } else {
+            this.estado.set(response[0]);
+          }
           console.log(this.estado());
           this.cargando.set(false);
         },
         error: (error) => {
           console.error('Error al obtener estado', error);
           this.error.set('Error al cargar estado');
+          this.cargando.set(false);
         }
       });
   }

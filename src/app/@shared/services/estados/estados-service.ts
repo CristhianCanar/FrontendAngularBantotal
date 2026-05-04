@@ -3,26 +3,17 @@ import { Injectable } from '@angular/core';
 import { ObtenerEstadosByPaisRequest } from '../../models/estados/obtener-estados-by-pais-request.model';
 import { Observable } from 'rxjs';
 import { Estado } from '../../models/estados/estado.model';
+import { ApiService } from '../api.service';
+import { API_ENDPOINTS } from '../../../@core/constants/api-endpoints';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EstadosService {
-  private baseUrl = 'http://localhost:3000/api';
 
-  constructor(private http: HttpClient) {}
+  constructor(private apiService: ApiService) { }
 
   obtenerEstadosByPais(request: ObtenerEstadosByPaisRequest): Observable<Estado[]> {
-
-    const url = `${this.baseUrl}/paises/estados/${request.pais}`;
-
-    console.log('Obteniendo Estados con Pais ID:', url);
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Cache-Control': 'no-cache'
-    });
-
-    return this.http.get<Estado[]>(url, { headers });
+    return this.apiService.get<Estado[]>(API_ENDPOINTS.ESTADOS.GET_BY_PAIS_ID(request.pais));
   }
 }

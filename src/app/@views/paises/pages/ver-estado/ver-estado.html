@@ -15,11 +15,11 @@
       <app-error-alert [message]="error()"> </app-error-alert>
     }
 
-    @if (estado() && estado()?.identificador) {
+    @if (estado() && estado()) {
       <app-detail-card [title]="'Estado/Provincia Detalles'" [data]="estado()" [fields]="columnas">
       </app-detail-card>
     }
-    @if (!cargando() && estado()?.identificador === '') {
+    @if (estado() === null) {
       <app-empty-state message="Estado no encontrado"> </app-empty-state>
     }
   </div>
